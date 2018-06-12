@@ -1,0 +1,43 @@
+{
+  "name": "cryptomkt-promise",
+  "version": "0.1.0",
+  "description": "CryptoMKT REST API wrapper using Bluebird promises",
+  "keywords": [
+    "cryptomkt",
+    "btc",
+    "eth",
+    "xlm",
+    "clp",
+    "bitcoin",
+    "ethereum",
+    "bluebird",
+    "promise",
+    "rest",
+    "api",
+    "wrapper"
+  ],
+  "author": {
+    "name": "Andres Junge <ajunge@gmail.com>"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "crypto-js": "^3.1.9-1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "underscore": "1.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ajunge/cryptomkt-promise"
+  },
+  "main": "cryptomkt.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "bugs": {
+    "url": "https://github.com/ajunge/cryptomkt-promise/issues",
+    "email": "ajunge@gmail.com"
+  },
+  "readmeFilename": "README.md"
+}
