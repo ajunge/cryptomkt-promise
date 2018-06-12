@@ -30,8 +30,8 @@ CryptoMKT.prototype._request = function(method, path, args, data, auth=false) {
     uri: 'https://api.cryptomkt.com' + fullPath,
     method: method,
     headers: {
-      'User-Agent': 'Mozilla/4.0 (compatible; cryptomkt-promise Node.js client)',
-      'Content-Type': 'application/x-www-form-urlencoded'
+      //'User-Agent': 'Mozilla/4.0 (compatible; cryptomkt-promise Node.js client)',
+      //'Content-Type': 'application/x-www-form-urlencoded'
     },
     timeout: 5000,
     resolveWithFullResponse: true,
