@@ -50,7 +50,7 @@ CryptoMKT.prototype._request = function(method, path, args, data, auth=false) {
     options.headers =Object.assign(options.headers, authHeader);
   }
 
-  console.log(options);
+  //console.log(options);
 
   return requestPromise(options)
     .then(function(res) {
@@ -69,8 +69,8 @@ CryptoMKT.prototype._request = function(method, path, args, data, auth=false) {
   CryptoMKT.prototype._authHeader = function(method, path, body){
     var time = Math.floor(new Date() / 1000); 
     var message=time+path;
-    
-    console.log(message)
+
+    //console.log(message)
     var signature = crypto.createHmac('sha384', this.api_secret).update(message).digest('hex');
 
     return {
