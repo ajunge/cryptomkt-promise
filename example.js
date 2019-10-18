@@ -13,4 +13,8 @@ var privateCryptoMKT = new CryptoMKT(api_key, api_secret);
 
 //commented out for your protection
 
-privateCryptoMKT.balance().then(function(result) { console.log(result) });
+//privateCryptoMKT.balance().then(function(result) { console.log(result) });
+//privateCryptoMKT.account().then(function(result) { console.log(result) });
+//privateCryptoMKT.order('M123456').then(function(result) { console.log(result) });
+//privateCryptoMKT.active_orders('BTCCLP').then(function(result) { console.log(result) });
+//privateCryptoMKT.executed_orders('BTCCLP').then(function(result) { console.log(result) });

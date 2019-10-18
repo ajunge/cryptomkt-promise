@@ -1,7 +1,6 @@
 var querystring = require("querystring");
 var requestPromise = require('request-promise');
 var _ = require('underscore');
-var CryptoJS = require('crypto-js');
 var crypto = require('crypto');
 var Promise = require('bluebird');
 
@@ -47,7 +46,7 @@ CryptoMKT.prototype._request = function(method, path, args, data, auth=false) {
             return Promise.reject('Must provide api_key and api_secret to make this API request.');
         }
 
-        var authHeader=this._authHeader(method,fullPath, data)
+        var authHeader=this._authHeader(method, path, data)
         options.headers = Object.assign(options.headers, authHeader);
     }
 
@@ -76,10 +75,7 @@ CryptoMKT.prototype._authHeader = function(method, path, body){
 
     var time = Math.floor(new Date() / 1000);
     var message=time+path+body_str;
-
-    var signature = crypto.createHmac('sha384', this.api_secret)
-        .update(message)
-        .digest('hex');
+    var signature = crypto.createHmac('sha384', this.api_secret).update(message).digest('hex');
 
     return {
         'X-MKT-APIKEY': this.api_key,
@@ -132,10 +128,29 @@ CryptoMKT.prototype.trades = function(market, start, end, page, limit) {
 // (you need to have api_key / api_secret)
 //
 
-
 // https://developers.cryptomkt.com/es/?typescript#balance
 CryptoMKT.prototype.balance = function() {
     return this._request('GET','/v1/balance',null,null,true);
+}
+
+// https://developers.cryptomkt.com/es/#informacion-de-cuenta
+CryptoMKT.prototype.account = function() {
+    return this._request('GET','/v1/account',null,null,true);
+}
+
+// https://developers.cryptomkt.com/es/#estado-de-orden
+CryptoMKT.prototype.order = function(id) {
+    return this._request('GET','/v1/orders/status',{id},null,true);
+}
+
+// https://developers.cryptomkt.com/es/#ordenes-activas
+CryptoMKT.prototype.active_orders = function(market, page=1, limit=20) {
+    return this._request('GET','/v1/orders/active',{market,page,limit},null,true);
+}
+
+// https://developers.cryptomkt.com/es/#ordenes-ejecutadas
+CryptoMKT.prototype.executed_orders = function(market, page=1, limit=20) {
+    return this._request('GET','/v1/orders/executed',{market,page,limit},null,true);
 }
 
 module.exports = CryptoMKT;
