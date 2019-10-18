@@ -75,7 +75,9 @@ CryptoMKT.prototype._authHeader = function(method, path, body){
 
     var time = Math.floor(new Date() / 1000);
     var message=time+path+body_str;
-    var signature = crypto.createHmac('sha384', this.api_secret).update(message).digest('hex');
+    var signature = crypto.createHmac('sha384', this.api_secret)
+        .update(message)
+        .digest('hex');
 
     return {
         'X-MKT-APIKEY': this.api_key,
